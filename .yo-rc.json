@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "escola.fred",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "escola",
+    "packageName": "escola.fred",
+    "packageFolder": "escola/fred",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MjdlMWRhY2I0NWIxNzAxMzg2NzNmOWNkNWQ3ZTk0ODQ4OTM2MGFmMzNhYjUyYTFjYzgzMTFiYWEyZjk0NjlkN2I0ZTFkZmE2MzE1ZjU1NmNjYjVjMDAxZGM4MWFjM2I3N2Y5NTM3M2Q4MzRmNTQ5MGRhOGY4NGNkZTZjNGRkN2E=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1609702747429,
+    "testFrameworks": ["gatling", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br"],
+    "blueprints": []
+  }
+}
