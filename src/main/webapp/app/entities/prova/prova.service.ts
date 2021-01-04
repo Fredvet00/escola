@@ -35,4 +35,8 @@ export class ProvaService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  download(format: string): Observable<HttpResponse<{}>> {
+    return this.http.get(`${this.resourceUrl}/${format}/download`, { observe: 'response' });
+  }
 }

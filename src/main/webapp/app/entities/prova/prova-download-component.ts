@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { IProva } from 'app/shared/model/prova.model';
 
 @Component({
-  selector: 'jhi-prova-detail',
-  templateUrl: './prova-detail.component.html',
+  selector: 'jhi-prova-download',
+  templateUrl: './prova-download-component.html',
 })
-export class ProvaDetailComponent implements OnInit {
+export class ProvaDownloadComponent implements OnInit {
   prova: IProva | null = null;
 
   constructor(protected activatedRoute: ActivatedRoute, protected provaService: ProvaService) {}
@@ -19,5 +19,9 @@ export class ProvaDetailComponent implements OnInit {
 
   previousState(): void {
     window.history.back();
+  }
+  download(format: string): void {
+    this.provaService.download(format);
+    window.alert('aqui1');
   }
 }

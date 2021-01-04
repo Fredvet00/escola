@@ -11,6 +11,7 @@ import { ProvaService } from './prova.service';
 import { ProvaComponent } from './prova.component';
 import { ProvaDetailComponent } from './prova-detail.component';
 import { ProvaUpdateComponent } from './prova-update.component';
+import { ProvaDownloadComponent } from './prova-download-component';
 
 @Injectable({ providedIn: 'root' })
 export class ProvaResolve implements Resolve<IProva> {
@@ -72,6 +73,18 @@ export const provaRoute: Routes = [
   {
     path: ':id/edit',
     component: ProvaUpdateComponent,
+    resolve: {
+      prova: ProvaResolve,
+    },
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'escolaApp.prova.home.title',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/download',
+    component: ProvaDownloadComponent,
     resolve: {
       prova: ProvaResolve,
     },
