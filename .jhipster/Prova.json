@@ -1,0 +1,32 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numquestoes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "enunciado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "texto",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20210104121452",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceImpl",
+  "entityTableName": "prova",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": true,
+  "pagination": "pagination"
+}

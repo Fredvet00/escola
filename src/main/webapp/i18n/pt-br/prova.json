@@ -1,0 +1,25 @@
+{
+  "escolaApp": {
+    "prova": {
+      "home": {
+        "title": "Prova",
+        "createLabel": "Criar novo Prova",
+        "createOrEditLabel": "Criar ou editar Prova",
+        "notFound": "Nenhum Prova encontrado"
+      },
+      "created": "Um novo Prova foi criado com o identificador {{ param }}",
+      "updated": "Um Prova foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Prova foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Prova {{ id }}?"
+      },
+      "detail": {
+        "title": "Prova"
+      },
+      "nome": "Nome",
+      "numquestoes": "Numquestoes",
+      "enunciado": "Enunciado",
+      "texto": "Texto"
+    }
+  }
+}
