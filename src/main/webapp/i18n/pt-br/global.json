@@ -9,6 +9,8 @@
         "main": "Entidades",
         "escola": "Escola",
         "curso": "Curso",
+        "prova": "Prova",
+        "aluno": "Aluno",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -16,6 +16,8 @@
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210103200320_added_entity_Escola.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210104004330_added_entity_Curso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210104121452_added_entity_Prova.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210104122229_added_entity_Aluno.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->

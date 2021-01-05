@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="prova">
+            <h2><span jhiTranslate="escolaApp.prova.detail.title">Prova</span> {{ prova.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="escolaApp.prova.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ prova.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="escolaApp.prova.numquestoes">Numquestoes</span></dt>
+                <dd>
+                    <span>{{ prova.numquestoes }}</span>
+                </dd>
+                <dt><span jhiTranslate="escolaApp.prova.enunciado">Enunciado</span></dt>
+                <dd>
+                    <span>{{ prova.enunciado }}</span>
+                </dd>
+                <dt><span jhiTranslate="escolaApp.prova.texto">Texto</span></dt>
+                <dd>
+                    <span>{{ prova.texto }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prova', prova.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+            <button type="button"
+            [routerLink]="['/prova',prova.id,'download']"
+                    class="btn btn-primary">
+                    <span>&#9759;Download</span>
+
+            </button>
+        </div>
+    </div>
+</div>
