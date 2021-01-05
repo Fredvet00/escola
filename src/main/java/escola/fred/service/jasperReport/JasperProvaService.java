@@ -4,6 +4,7 @@ import escola.fred.domain.Prova;
 import escola.fred.repository.ProvaRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -16,17 +17,21 @@ import java.util.Map;
 
 @Service
 public class JasperProvaService {
+    @Autowired
     private ProvaRepository repository;
 
 
 
     public ResponseEntity<String> exportReport(String reportFormat) throws FileNotFoundException, JRException {
         String path= "..\\resources\\Report";
+        System.out.println("Chegou aqui");
         List<Prova> provas = repository.findAll();
+        System.out.println("Chegou aqui2");
         //carregar arquivo
         File file= ResourceUtils.getFile("classpath:prova.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(provas);
+        System.out.println("Chegou aqui3");
         Map<String, Object> parameters=new HashMap<>();
         parameters.put("createdBy", "fred");
         JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,parameters,dataSource);

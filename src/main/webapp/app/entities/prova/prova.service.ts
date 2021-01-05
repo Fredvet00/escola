@@ -36,7 +36,19 @@ export class ProvaService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  download(format: string): Observable<HttpResponse<{}>> {
-    return this.http.get(`${this.resourceUrl}/${format}/download`, { observe: 'response' });
+  download(): Observable<EntityResponseType> {
+    /* eslint-disable no-console */
+    console.log('aqui123');
+    /* eslint-enable no-console */
+    return this.http.get(`${this.resourceUrl}/pdf/download`, { observe: 'response' });
   }
+
+  //download(format: string): Observable<HttpResponse<{}>> {
+  /* eslint-disable no-console */
+  //console.log("this.http"+this.http);
+  //console.log("resource"+  `${this.resourceUrl}/${format}/download`)
+  /* eslint-enable no-console */
+  //return  this.http.get<IProva[]>(`${this.resourceUrl}/${format}/download`, { observe: 'response' });
+  //return this.http.post(``, { observe: 'response' });
+  //}
 }

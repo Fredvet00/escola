@@ -20,8 +20,8 @@ export class ProvaDownloadComponent implements OnInit {
   previousState(): void {
     window.history.back();
   }
-  download(format: string): void {
-    this.provaService.download(format);
-    window.alert('aqui1');
+
+  download(): void {
+    this.provaService.download().subscribe(() => {});
   }
 }

@@ -13,6 +13,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,6 +45,8 @@ public class ProvaResource {
     private final ProvaService provaService;
 
     private final ProvaQueryService provaQueryService;
+
+    @Autowired
     private JasperProvaService jasperProvaService;
 
     public ProvaResource(ProvaService provaService, ProvaQueryService provaQueryService) {
@@ -130,10 +133,10 @@ public class ProvaResource {
         Optional<ProvaDTO> provaDTO = provaService.findOne(id);
         return ResponseUtil.wrapOrNotFound(provaDTO);
     }
-    @GetMapping("/prova/{format}/download")
-    public ResponseEntity<String> getProvaDownload(@PathVariable String format ) throws FileNotFoundException, JRException {
-        log.debug("AQUI!!! REST request to get ProvaDownload : {}", format);
-        return (jasperProvaService.exportReport(format));
+  @GetMapping("/prova/{format}/download")
+    public ResponseEntity<String> getProvaDownload(@PathVariable String format) throws FileNotFoundException, JRException {
+        log.debug("AQUI!!! REST request to get ProvaDownload : {}");
+        return (jasperProvaService.exportReport("pdf"));
 
 
     }

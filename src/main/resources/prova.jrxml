@@ -57,7 +57,7 @@
                 </textElement>
                 <text><![CDATA[Prova de  ]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+            <textField textAdjust ="StretchHeight" isBlankWhenNull="true">
                 <reportElement style="Detail" positionType="Float" x="330" y="70" width="80" height="18" uuid="8ef62ae5-316d-4a01-ac9e-335d8576be3d"/>
                 <textElement>
                     <font size="14" isBold="true"/>
