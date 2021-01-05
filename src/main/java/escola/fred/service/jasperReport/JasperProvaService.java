@@ -23,15 +23,12 @@ public class JasperProvaService {
 
 
     public ResponseEntity<String> exportReport(String reportFormat) throws FileNotFoundException, JRException {
-        String path= "..\\resources\\Report";
-        System.out.println("Chegou aqui");
+        String path= "C:\\Users\\fredy\\OneDrive\\Documentos\\GitHub\\escola\\src\\main\\resources\\Report";
         List<Prova> provas = repository.findAll();
-        System.out.println("Chegou aqui2");
         //carregar arquivo
         File file= ResourceUtils.getFile("classpath:prova.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(provas);
-        System.out.println("Chegou aqui3");
         Map<String, Object> parameters=new HashMap<>();
         parameters.put("createdBy", "fred");
         JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,parameters,dataSource);

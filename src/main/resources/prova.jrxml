@@ -57,7 +57,7 @@
                 </textElement>
                 <text><![CDATA[Prova de  ]]></text>
             </staticText>
-            <textField textAdjust ="StretchHeight" isBlankWhenNull="true">
+            <textField  isBlankWhenNull="true">
                 <reportElement style="Detail" positionType="Float" x="330" y="70" width="80" height="18" uuid="8ef62ae5-316d-4a01-ac9e-335d8576be3d"/>
                 <textElement>
                     <font size="14" isBold="true"/>
@@ -71,7 +71,7 @@
                 </textElement>
                 <text><![CDATA[numero de questoes:]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+            <textField  isBlankWhenNull="true">
                 <reportElement style="Detail" positionType="Float" x="442" y="11" width="132" height="18" uuid="4df580e2-7dfb-4508-9b99-0661f352574e"/>
                 <textElement>
                     <font size="14" isBold="false"/>
@@ -110,7 +110,7 @@
                 </textElement>
                 <text><![CDATA[questão nºx)]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+            <textField isBlankWhenNull="true">
                 <reportElement style="Detail" positionType="Float" x="97" y="150" width="338" height="80" uuid="4d2f149e-6d37-4585-86e3-89198103f3f7"/>
                 <textElement>
                     <font size="14" isBold="true"/>
@@ -124,7 +124,7 @@
                 </textElement>
                 <text><![CDATA[Texto da questão]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+            <textField  isBlankWhenNull="true">
                 <reportElement style="Detail" positionType="Float" x="58" y="30" width="444" height="100" uuid="acb9ccfc-a22c-4898-8ee3-6df6335820e5"/>
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
