@@ -5,6 +5,7 @@
     "project": "./tsconfig.base.json"
   },
   "rules": {
+    "no-var": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/tslint/config": [
       "error",

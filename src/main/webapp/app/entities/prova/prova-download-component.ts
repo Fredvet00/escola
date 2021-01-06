@@ -16,6 +16,7 @@ export class ProvaDownloadComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute, protected provaService: ProvaService) {}
 
   ngOnInit(): void {
+    this.prova = new Prova();
     this.activatedRoute.data.subscribe(({ prova }) => (this.prova = prova));
   }
 
@@ -24,12 +25,11 @@ export class ProvaDownloadComponent implements OnInit {
   }
 
   download(): void {
-    this.prova = new Prova();
-    this.provaService.imprimir(this.prova).subscribe(data => {
+    this.provaService.imprimir(this.prova!).subscribe(data => {
       // eslint-disable-next-line no-console
       console.log(data);
-      const blob = new Blob([data], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
+      var blob = new Blob([data], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
       FileSaver.saveAs(url, 'prova.pdf');
     });
   }

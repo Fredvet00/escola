@@ -141,13 +141,14 @@ public class ProvaResource {
 
     @PostMapping("/prova/download")
     public ResponseEntity<ByteArrayResource> getProvaDownload(@Valid @RequestBody ProvaDTO provaDTO) throws FileNotFoundException, JRException {
+
         try {  log.debug("Payload for generating simple PDF report: {}", provaDTO);
         ByteArrayResource byteArrayResource = jasperProvaService.simpleReport(provaDTO);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=ficha_de_matricula.pdf");
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename= prova.pdf");
         headers.setContentLength(byteArrayResource.contentLength());
-        System.out.println("passou aqui " + byteArrayResource.getFilename() + " Declaração: " +provaDTO.getNome());
+        log.debug("REST request to POST prova/download:     return prova:"+provaDTO.getNome());
 
         return new ResponseEntity<>(byteArrayResource, headers, HttpStatus.OK);
         }
