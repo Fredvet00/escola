@@ -1,8 +1,10 @@
+import { IProva, Prova } from './../../shared/model/prova.model';
 import { ProvaService } from 'app/entities/prova/prova.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { IProva } from 'app/shared/model/prova.model';
+declare var require: any;
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'jhi-prova-download',
@@ -22,6 +24,12 @@ export class ProvaDownloadComponent implements OnInit {
   }
 
   download(): void {
-    this.provaService.download().subscribe(() => {});
+    this.prova = new Prova();
+    this.provaService.imprimir(this.prova).subscribe(data => {
+      console.log(data);
+      var blob = new Blob([data], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      FileSaver.saveAs(url, 'prova.pdf');
+    });
   }
 }

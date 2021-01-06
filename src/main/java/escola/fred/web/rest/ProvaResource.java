@@ -10,18 +10,23 @@ import escola.fred.service.ProvaQueryService;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.jsonwebtoken.io.IOException;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -133,13 +138,31 @@ public class ProvaResource {
         Optional<ProvaDTO> provaDTO = provaService.findOne(id);
         return ResponseUtil.wrapOrNotFound(provaDTO);
     }
-  @GetMapping("/prova/{format}/download")
+
+    @GetMapping("/prova/download")
+    public ResponseEntity<ByteArrayResource> getProvaDownload(@Valid @RequestBody ProvaDTO provaDTO) throws FileNotFoundException, JRException {
+        try {  log.debug("Payload for generating simple PDF report: {}", provaDTO);
+        ByteArrayResource byteArrayResource = jasperProvaService.simpleReport(provaDTO);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=ficha_de_matricula.pdf");
+        headers.setContentLength(byteArrayResource.contentLength());
+        System.out.println("passou aqui " + byteArrayResource.getFilename() + " Declaração: " +provaDTO.getNome());
+
+        return new ResponseEntity<>(byteArrayResource, headers, HttpStatus.OK);
+        }
+        catch (IOException e) {
+            log.error(e.getMessage());
+            System.out.println("nao funciona");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    /* @GetMapping("/prova/{format}/download")
     public ResponseEntity<String> getProvaDownload(@PathVariable String format) throws FileNotFoundException, JRException {
         log.debug("AQUI!!! REST request to get ProvaDownload : {}");
         return (jasperProvaService.exportReport("pdf"));
+*/
 
-
-    }
     /**
      * {@code DELETE  /prova/:id} : delete the "id" prova.
      *

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IProva } from 'app/shared/model/prova.model';
+import { tap } from 'rxjs/operators';
 
 type EntityResponseType = HttpResponse<IProva>;
 type EntityArrayResponseType = HttpResponse<IProva[]>;
@@ -36,19 +37,19 @@ export class ProvaService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  download(): Observable<EntityResponseType> {
-    /* eslint-disable no-console */
-    console.log('aqui123');
-    /* eslint-enable no-console */
-    return this.http.get(`${this.resourceUrl}/pdf/download`, { observe: 'response' });
+  imprimir(prova: IProva): Observable<Blob> {
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/pdf',
+      },
+    };
+    return this.http.post<any>(this.resourceUrl, prova, httpOptions).pipe(
+      tap(
+        data => console.log('teste 1 ', data),
+        error => console.log('teste 2', error)
+      )
+    );
   }
-
-  //download(format: string): Observable<HttpResponse<{}>> {
-  /* eslint-disable no-console */
-  //console.log("this.http"+this.http);
-  //console.log("resource"+  `${this.resourceUrl}/${format}/download`)
-  /* eslint-enable no-console */
-  //return  this.http.get<IProva[]>(`${this.resourceUrl}/${format}/download`, { observe: 'response' });
-  //return this.http.post(``, { observe: 'response' });
-  //}
 }
