@@ -45,9 +45,11 @@ export class ProvaService {
         Accept: 'application/pdf',
       },
     };
-    return this.http.post<any>(this.resourceUrl, prova, httpOptions).pipe(
+    return this.http.post<any>(this.resourceUrl + '/download', prova, httpOptions).pipe(
       tap(
+        // eslint-disable-next-line no-console
         data => console.log('teste 1 ', data),
+        // eslint-disable-next-line no-console
         error => console.log('teste 2', error)
       )
     );

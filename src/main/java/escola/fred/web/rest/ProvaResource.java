@@ -139,7 +139,7 @@ public class ProvaResource {
         return ResponseUtil.wrapOrNotFound(provaDTO);
     }
 
-    @GetMapping("/prova/download")
+    @PostMapping("/prova/download")
     public ResponseEntity<ByteArrayResource> getProvaDownload(@Valid @RequestBody ProvaDTO provaDTO) throws FileNotFoundException, JRException {
         try {  log.debug("Payload for generating simple PDF report: {}", provaDTO);
         ByteArrayResource byteArrayResource = jasperProvaService.simpleReport(provaDTO);
@@ -157,11 +157,7 @@ public class ProvaResource {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    /* @GetMapping("/prova/{format}/download")
-    public ResponseEntity<String> getProvaDownload(@PathVariable String format) throws FileNotFoundException, JRException {
-        log.debug("AQUI!!! REST request to get ProvaDownload : {}");
-        return (jasperProvaService.exportReport("pdf"));
-*/
+
 
     /**
      * {@code DELETE  /prova/:id} : delete the "id" prova.
